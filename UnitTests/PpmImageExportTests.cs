@@ -58,4 +58,17 @@ public class PpmImageExportTests
         string actualResult = ConvertPixelsToPpmStringFormat(image.Pixels);
         Assert.Equal(expectedResult, actualResult);
     }
+
+    [Fact]
+    public void GenerateXYWithLinq()
+    {
+        const int width = 4;
+        const int height = 4;
+        Image image = new(width, height);
+
+        var list = Enumerable.Range(0, width).SelectMany(x => Enumerable.Range(0, height).Select(y => (x, y)))
+            .ToList();
+        ;
+        // .ForEach(tuples => testOutputHelper.WriteLine(tuples.ToString()));
+    }
 }

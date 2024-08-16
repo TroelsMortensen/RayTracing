@@ -8,4 +8,12 @@ public static class BaseExtensions
 
     public static string StringJoin(this IEnumerable<string> seq, string separator) =>
         string.Join(separator, seq);
+
+    public static void ForEach<T>(this IEnumerable<T> seq, Action<T> action)
+    {
+        foreach (T item in seq)
+        {
+            action(item);
+        }
+    }
 }
