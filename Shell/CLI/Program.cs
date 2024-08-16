@@ -15,8 +15,8 @@ void PrintHelloWorldImage()
     {
         for (int y = 0; y < image.Height; y++)
         {
-            float r = y / (float)(image.Height - 1);
-            float g = x / (float)(image.Width - 1);
+            float r = x / (float)(image.Height - 1);
+            float g = y / (float)(image.Width - 1);
             float b = 0.0f;
 
             image.SetPixel(new Pixel(r, g, b), x, y);
