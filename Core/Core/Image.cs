@@ -16,5 +16,5 @@ public record Image
     public Pixel[] Pixels { get; }
 
     public void SetPixel(Pixel p, int x, int y) =>
-        Pixels[x * Width + y] = p;
+        Pixels[x + Width * y] = p;
 }
