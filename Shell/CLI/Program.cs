@@ -44,7 +44,7 @@ void PrintImage()
             
             image.SetPixel(pixel, tuple.X, tuple.Y);
         });
-    ExportPpm(image, WriteToFile);
+    ImageToPpmStringFormat(image).Finally(WriteToFile);
 }
 
 void WriteToFile(string s) =>

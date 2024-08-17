@@ -16,7 +16,6 @@ public class PpmImageExportTests
     [Fact]
     public void ExportImageToStringShouldProduceCorrectPpmFormat()
     {
-        string actualResult = "";
 
         var image = new Image(2, 2);
         image.SetPixel(new Pixel(1, 0, 0), 0, 0);
@@ -24,7 +23,7 @@ public class PpmImageExportTests
         image.SetPixel(new Pixel(0, 0, 1), 0, 1);
         image.SetPixel(new Pixel(1, 1, 1), 1, 1);
 
-        ExportPpm(image, s => actualResult = s);
+        string actualResult = ImageToPpmStringFormat(image);
 
         string expectedResult = """
                                 P3
@@ -57,18 +56,5 @@ public class PpmImageExportTests
 
         string actualResult = ConvertPixelsToPpmStringFormat(image.Pixels);
         Assert.Equal(expectedResult, actualResult);
-    }
-
-    [Fact]
-    public void GenerateXYWithLinq()
-    {
-        const int width = 4;
-        const int height = 4;
-        Image image = new(width, height);
-
-        var list = Enumerable.Range(0, width).SelectMany(x => Enumerable.Range(0, height).Select(y => (x, y)))
-            .ToList();
-        ;
-        // .ForEach(tuples => testOutputHelper.WriteLine(tuples.ToString()));
     }
 }

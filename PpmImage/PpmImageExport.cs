@@ -8,18 +8,16 @@ public static class PpmImageExport
 {
     private const string MaxPixelValue = "255";
 
-    public static void ExportPpm(Image image, Action<string> outputPpm) =>
+    public static string ImageToPpmStringFormat(Image image) =>
         new StringBuilder()
             .AppendLine("P3")
             .AppendLine(ImageWidthByHeight(image))
             .AppendLine(MaxPixelValue)
             .Append(ConvertPixelsToPpmStringFormat(image.Pixels))
-            .ToString()
-            .Finally(outputPpm);
+            .ToString();
 
     private static string ImageWidthByHeight(Image image) =>
         $"{image.Width} {image.Height}";
-
 
     public static string ConvertPixelsToPpmStringFormat(IEnumerable<Pixel> pixels) =>
         pixels
