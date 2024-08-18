@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -9,8 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Core\Core\Core.csproj" />
-      <ProjectReference Include="..\..\PpmImage\PpmImage.csproj" />
-      <ProjectReference Include="..\PngImage\PngImage.csproj" />
+      <ProjectReference Include="..\..\Core\Tooling\Tooling.csproj" />
     </ItemGroup>
 
     <ItemGroup>
