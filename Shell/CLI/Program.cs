@@ -12,8 +12,7 @@ Console.WriteLine("Printed");
 void PrintTestPng(int width, int height) =>
     GenerateArrayOfDummyPixels(width, height)
         .Then(CreateImageFromPixels(width, height))
-        .Finally(SaveToPng()
-        );
+        .Finally(SaveToPng());
 
 Pixel[] GenerateArrayOfDummyPixels(int width, int height) =>
     Enumerable.Range(0, width).SelectMany(x => Enumerable.Range(0, height).Select(y => (X: x, Y: y)))
