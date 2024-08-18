@@ -18,9 +18,15 @@ public record Image
     public int Height { get; }
     public Pixel[] Pixels { get; }
 
-    public void SetPixel(Pixel p, int x, int y) =>
-        Pixels[x + Width * y] = p;
+    // public void SetPixel(Pixel p, int x, int y) =>
+    //     Pixels[x + Width * y] = p;
 
-    public Pixel GetPixel(int x, int y) =>
-        Pixels[x + Width * y];
+    // public Pixel GetPixel(int x, int y) =>
+    //     ;
+
+    public Pixel this[int x, int y]
+    {
+        get => Pixels[x + Width * y];
+        set => Pixels[x + Width * y] = value;
+    }
 }

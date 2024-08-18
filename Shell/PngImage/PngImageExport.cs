@@ -36,7 +36,7 @@ public static class PngImageExport
         => c => bmp.SetPixel(c.X, c.Y, c.Color);
 
     private static Func<(int X, int Y), (int X, int Y, Color Color)> GenerateXYColorTuplesFromPixels(Image image) =>
-        t => (t.X, t.Y, Color: PixelToColor(image.GetPixel(t.X, t.Y)));
+        t => (t.X, t.Y, Color: PixelToColor(image[t.X, t.Y]));
 
     private static IEnumerable<(int X, int Y)> GenerateXYCoordinateTuples(Image image)
         => Enumerable.Range(0, image.Width)
