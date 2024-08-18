@@ -6,7 +6,7 @@ using static PngImage.PngImageExport;
 using Image = Core.Image;
 
 // PrintImage();
-PrintDummyPng(256, 256);
+PrintTestPng(256, 256);
 Console.WriteLine("Printed");
 
 Pixel[] GenerateArrayOfDummyPixels(int width, int height) =>
@@ -18,7 +18,7 @@ Pixel[] GenerateArrayOfDummyPixels(int width, int height) =>
         )
         .ToArray();
 
-void PrintDummyPng(int width, int height) =>
+void PrintTestPng(int width, int height) =>
     GenerateArrayOfDummyPixels(width, height)
         .Then(CreateImageFromPixels(width, height))
         .Finally(SaveToPng()
