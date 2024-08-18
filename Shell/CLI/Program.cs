@@ -44,8 +44,6 @@ void PrintImage()
             
             image.SetPixel(pixel, tuple.X, tuple.Y);
         });
-    ImageToPpmStringFormat(image).Finally(WriteToFile);
+    ExportImageToPpmFile(image, @"C:\TRMO\RiderProjects\RayTracing\Shell\CLI\hello_world.ppm");
 }
 
-void WriteToFile(string s) =>
-    File.WriteAllText("C:\\TRMO\\RiderProjects\\RayTracing\\Shell\\CLI\\hello_world.ppm", s);
