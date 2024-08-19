@@ -15,7 +15,7 @@ The first:
 I have been looking into functional programming (FP) recently, first in C#, and then F#. So I wanted to apply some of those ideas and principles. 
 I am not necessarily all that interested in the immutable data part of FP, or monads, or all kinds of higher order functions, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
 
-### Functional code organization.
+#### Functional code organization.
 
 What you will find is a lot of static classes, with static methods (functions). There are no classes. All data is kept in record types.\
 Pure functions work only with their input, and provide an output. They don't use field variables from a class they belong to. They don't modify field variables. Therefore, they can be made static.\
