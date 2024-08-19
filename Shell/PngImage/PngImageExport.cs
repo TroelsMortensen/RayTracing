@@ -13,12 +13,12 @@ public static class PngImageExport
     public static void ExportImageToPngFile(Image image, string path) =>
         CreateEmptyBitmap(image)
             .Then(MapImageOntoBitmap(image))
-            .Finally(SaveToPng(path));
+            .Finally(SaveBitmapToPng(path));
 
     private static Func<Bitmap, Bitmap> MapImageOntoBitmap(Image image) =>
         bmp => TransferPixelsFromImageToBitMap(image, bmp);
 
-    private static Action<Bitmap> SaveToPng(string path) =>
+    private static Action<Bitmap> SaveBitmapToPng(string path) =>
         bmp => bmp.Save(path, Png);
 
     private static Bitmap CreateEmptyBitmap(Image image) =>
