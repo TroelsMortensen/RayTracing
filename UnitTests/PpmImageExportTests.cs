@@ -53,7 +53,7 @@ public class PpmImageExportTests
         image[0, 1] = new Color(0, 0, 1);
         image[1, 1] = new Color(1, 1, 1);
 
-        string actualResult = ConvertPixelsToPpmStringFormat(image.Pixels);
+        string actualResult = ConvertPixelsToPpmStringFormat(image.Colors);
         Assert.Equal(expectedResult, actualResult);
     }
 }
