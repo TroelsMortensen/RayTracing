@@ -23,8 +23,8 @@ Pixel[] GenerateArrayOfDummyPixels(int width, int height) =>
         )
         .ToArray();
 
-Func<Pixel[], Image> CreateImageFromPixels(int width, int height)
-    => pxls => new Image(width, height, pxls);
+Func<Pixel[], Image> CreateImageFromPixels(int width, int height) =>
+    pxls => new Image(width, height, pxls);
 
 Action<Image> SaveToPng() =>
     image => ExportImageToPngFile(
