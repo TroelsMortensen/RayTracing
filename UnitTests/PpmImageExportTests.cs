@@ -4,19 +4,14 @@ using static PpmImage.PpmImageExport;
 
 namespace UnitTests;
 
-public class PpmImageExportTests
+public class PpmImageExportTests(ITestOutputHelper testOutputHelper)
 {
-    private readonly ITestOutputHelper testOutputHelper;
-
-    public PpmImageExportTests(ITestOutputHelper testOutputHelper)
-    {
-        this.testOutputHelper = testOutputHelper;
-    }
+    private readonly ITestOutputHelper testOutputHelper = testOutputHelper;
 
     [Fact]
     public void ExportImageToStringShouldProduceCorrectPpmFormat()
     {
-        var image = new Image(2, 2);
+        Image image = new(2, 2);
         image[0, 0] = new Color(1, 0, 0);
         image[1, 0] = new Color(0, 1, 0);
         image[0, 1] = new Color(0, 0, 1);
@@ -24,15 +19,15 @@ public class PpmImageExportTests
 
         string actualResult = ImageToPpmStringFormat(image);
 
-        string expectedResult = """
-                                P3
-                                2 2
-                                255
-                                255 0 0
-                                0 255 0
-                                0 0 255
-                                255 255 255
-                                """;
+        const string expectedResult = """
+                                      P3
+                                      2 2
+                                      255
+                                      255 0 0
+                                      0 255 0
+                                      0 0 255
+                                      255 255 255
+                                      """;
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -40,14 +35,14 @@ public class PpmImageExportTests
     [Fact]
     public void PixelsToSingleStringShouldNotHaveTrailingLineBreaks()
     {
-        string expectedResult = """
-                                255 0 0
-                                0 255 0
-                                0 0 255
-                                255 255 255
-                                """;
+        const string expectedResult = """
+                                      255 0 0
+                                      0 255 0
+                                      0 0 255
+                                      255 255 255
+                                      """;
 
-        var image = new Image(2, 2);
+        Image image = new(2, 2);
         image[0, 0] = new Color(1, 0, 0);
         image[1, 0] = new Color(0, 1, 0);
         image[0, 1] = new Color(0, 0, 1);
