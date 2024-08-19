@@ -4,6 +4,7 @@ using Core;
 using Tooling;
 using static System.Drawing.Imaging.ImageFormat;
 using Image = Core.Image;
+// ReSharper disable InconsistentNaming
 
 namespace PngImage;
 
