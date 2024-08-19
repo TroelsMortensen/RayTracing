@@ -105,3 +105,6 @@ This is probably perfectly fine, but I feel that abstracting the lambda expressi
 * .Then(MapImageOntoBitmap(image)
 * vs
 * .Then(bmp => MapImageOntoBitmap(image, bmp))
+ 
+It is a kind of "partial application", though used differently from the usual examples, I guess.
+
