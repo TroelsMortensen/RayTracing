@@ -13,7 +13,7 @@ The first:
 
 ## A functional approach
 I have been looking into functional programming (FP) recently, first in C#, and then F#. So I wanted to apply some of those ideas and principles. 
-I am not all that interested in the immutable data part of FP, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
+I am not necessarily all that interested in the immutable data part of FP, or monads, or all kinds of higher order functions, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
 
 ## Functional Core / Mutable Shell
 This is an architectural approach, I can't find all that much concrete information about. It seems most of my books mention it one way or another, without specifying the name.\
@@ -24,7 +24,7 @@ At the time of writing both PPM and PNG image export is in the shell, because th
 
 ## Name your expressions and prose-code
 I have also attempted to apply the "Name your expressions" approach, I heard Zoran Horvat mention [in one of his vidoes](https://www.youtube.com/watch?v=hC87MbFoRR0). 
-Essentially this idea is to do a lot of "extract single statement into separate function", so that you can give that function a descriptive name. Instead of understanding what the statement does, you can read the name.
+Essentially this idea is to do a lot of "extract single/more statement(s) into separate function", so that you can give that function a descriptive name. Instead of understanding what the statement does, you can now read the name.
 It's a kind of abstraction. It's a basic refactoring technique, called ["extract function"](https://refactoring.com/catalog/extractFunction.html).\
 The idea is just to organize your code into separate chunks, with one side-effect usually being an increase in readability, and you spend less time actually trying to understand what is going on.
 
