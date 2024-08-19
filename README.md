@@ -70,7 +70,7 @@ private static Color PixelToColor(Pixel pixel) =>
     );
 ```
 
-Tiny functions, where the function name should be explanatory enough to know what is going on, without really having to dig into the code. Yes, it may be overkill to extraction the creation of a new Bitmap into a separate function. But this does allow me to hide the details of the creation, and instead write code which explains _what_ happens, rather than _how_ it happens. The same applies to the function which converts my Pixel to a Color.
+Tiny functions, where the function name should be explanatory enough for the reader to know what is going on, without really having to dig into the code. Yes, it may be overkill to extract the creation of a new Bitmap into a separate function. But this does allow me to hide the details of the creation, and instead write code which explains _what_ happens, rather than _how_ it happens. The same applies to the function which converts my Pixel to a Color.
 
 The name-your-expressions approach also results in me having a lot of functions, which returns other functions (or actions). This is to make the main function even more readable. But a function returning a function perhaps looks weird, so it's a bit of a trade-off, I haven't entirely decided on whether I like or not.\
 Now, a function returning a function is certainly not unheard of in FP, but the way I use it here is not something I have seen elsewhere. Which may indicate it's not a fantastic idea, but I will give this approach a shot, and eventually, perhaps, evaluate on the idea.
