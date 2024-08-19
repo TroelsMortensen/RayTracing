@@ -2,7 +2,9 @@
 
 public record Vec3(double X, double Y, double Z);
 
-public record Point(double X, double Y, double Z);
+public record Point3(double X, double Y, double Z);
+
+public record Ray(Point3 Origin, Vec3 Direction);
 
 public static class Vector3Exts
 {
@@ -26,6 +28,11 @@ public static class Point3Exts // May need something here eventually?
 
 public static class PointToVectorAndBack
 {
-    public static implicit operator Vec3(Point p) => new Vec3(p.X, p.Y, p.Z);
-    public static implicit operator Point(Vec3 v) => new Point(v.X, v.Y, v.Z);
+    public static implicit operator Vec3(Point3 p) => new Vec3(p.X, p.Y, p.Z);
+    public static implicit operator Point3(Vec3 v) => new Point3(v.X, v.Y, v.Z);
+}
+
+public static class RayExts
+{
+    public static Point3 At(this Ray r, double t) => r.Origin + r.Direction * t;
 }
