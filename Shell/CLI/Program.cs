@@ -17,11 +17,7 @@ void PrintTestPng(int width, int height) =>
 
 Pixel[] GenerateArrayOfDummyPixels(int width, int height) =>
     Enumerable.Range(0, width).SelectMany(x => Enumerable.Range(0, height).Select(y => (X: x, Y: y)))
-        .Select(tuple => new Pixel(
-            tuple.X / (float)(height - 1),
-            tuple.Y / (float)(width - 1),
-            0.0f)
-        )
+        .Select(XYTupleToPixel(width, height))
         .ToArray();
 
 Func<Pixel[], Image> CreateImageFromPixels(int width, int height) =>
@@ -32,3 +28,10 @@ Action<Image> SaveToPng() =>
         image,
         @"C:\TRMO\RiderProjects\RayTracing\Shell\CLI\dummy.png"
     );
+
+// ReSharper disable once InconsistentNaming
+Func<(int X, int Y), Pixel> XYTupleToPixel(int width, int height) =>
+    tuple => new Pixel(
+        tuple.X / (float)(height - 1),
+        tuple.Y / (float)(width - 1),
+        0.0f);
