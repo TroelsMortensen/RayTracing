@@ -12,8 +12,6 @@ public static class BaseExtensions
     public static void ForEach<T>(this IEnumerable<T> seq, Action<T> action)
     {
         foreach (T item in seq)
-        {
             action(item);
-        }
     }
 }
