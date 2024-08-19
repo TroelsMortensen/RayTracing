@@ -17,10 +17,10 @@ public class PpmImageExportTests
     public void ExportImageToStringShouldProduceCorrectPpmFormat()
     {
         var image = new Image(2, 2);
-        image[0, 0] = new Pixel(1, 0, 0);
-        image[1, 0] = new Pixel(0, 1, 0);
-        image[0, 1] = new Pixel(0, 0, 1);
-        image[1, 1] = new Pixel(1, 1, 1);
+        image[0, 0] = new Color(1, 0, 0);
+        image[1, 0] = new Color(0, 1, 0);
+        image[0, 1] = new Color(0, 0, 1);
+        image[1, 1] = new Color(1, 1, 1);
 
         string actualResult = ImageToPpmStringFormat(image);
 
@@ -48,10 +48,10 @@ public class PpmImageExportTests
                                 """;
 
         var image = new Image(2, 2);
-        image[0, 0] = new Pixel(1, 0, 0);
-        image[1, 0] = new Pixel(0, 1, 0);
-        image[0, 1] = new Pixel(0, 0, 1);
-        image[1, 1] = new Pixel(1, 1, 1);
+        image[0, 0] = new Color(1, 0, 0);
+        image[1, 0] = new Color(0, 1, 0);
+        image[0, 1] = new Color(0, 0, 1);
+        image[1, 1] = new Color(1, 1, 1);
 
         string actualResult = ConvertPixelsToPpmStringFormat(image.Pixels);
         Assert.Equal(expectedResult, actualResult);

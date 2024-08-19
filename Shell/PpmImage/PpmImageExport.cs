@@ -28,11 +28,11 @@ public static class PpmImageExport
     private static string ImageWidthByHeight(Image image) =>
         $"{image.Width} {image.Height}";
 
-    public static string ConvertPixelsToPpmStringFormat(IEnumerable<Pixel> pixels) =>
+    public static string ConvertPixelsToPpmStringFormat(IEnumerable<Color> pixels) =>
         pixels
             .Select(PixelToStringRepresentation)
             .StringJoin("\r\n");
 
-    private static string PixelToStringRepresentation(Pixel arg) =>
+    private static string PixelToStringRepresentation(Color arg) =>
         $"{(int)(arg.R * 255.999f)} {(int)(arg.G * 255.999f)} {(int)(arg.B * 255.999f)}";
 }

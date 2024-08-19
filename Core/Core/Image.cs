@@ -1,20 +1,20 @@
 ﻿namespace Core;
 
-public record Pixel(double R, double G, double B);
+public record Color(double R, double G, double B);
 
 public record Image
 {
     public int Width { get; }
     public int Height { get; }
-    public Pixel[] Pixels { get; }
+    public Color[] Pixels { get; }
 
     public Image(int width, int height) =>
-        (Width, Height, Pixels) = (width, height, new Pixel[width * height]);
+        (Width, Height, Pixels) = (width, height, new Color[width * height]);
 
-    public Image(int width, int height, Pixel[] pixels) =>
+    public Image(int width, int height, Color[] pixels) =>
         (Width, Height, Pixels) = (width, height, pixels);
 
-    public Pixel this[int x, int y]
+    public Color this[int x, int y]
     {
         get => Pixels[x + Width * y];
         set => Pixels[x + Width * y] = value;
