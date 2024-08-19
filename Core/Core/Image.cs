@@ -1,6 +1,6 @@
 ﻿namespace Core;
 
-public record Pixel(float R, float G, float B);
+public record Pixel(double R, double G, double B);
 
 public record Image
 {
