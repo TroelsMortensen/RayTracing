@@ -27,7 +27,7 @@ public static class PngImageExport
     private static Bitmap TransferPixelsFromImageToBitMap(Image image, Bitmap bmp)
     {
         GenerateXYCoordinateTuples(image)
-            .Select(GenerateXYColorTuplesFromPixels(image))
+            .Select(AddColorToTuple(image))
             .ForEach(SetColorOnBitmap(bmp));
         return bmp;
     }
@@ -35,7 +35,7 @@ public static class PngImageExport
     private static Action<(int X, int Y, Color Color)> SetColorOnBitmap(Bitmap bmp)
         => c => bmp.SetPixel(c.X, c.Y, c.Color);
 
-    private static Func<(int X, int Y), (int X, int Y, Color Color)> GenerateXYColorTuplesFromPixels(Image image) =>
+    private static Func<(int X, int Y), (int X, int Y, Color Color)> AddColorToTuple(Image image) =>
         t => (t.X, t.Y, Color: PixelToColor(image[t.X, t.Y]));
 
     private static IEnumerable<(int X, int Y)> GenerateXYCoordinateTuples(Image image)
