@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using Core;
-using static Tooling.BaseExtensions;
+using Tooling;
 
 namespace PpmImage;
 

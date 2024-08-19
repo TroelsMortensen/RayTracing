@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core\Core.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathTracing", "Core\PathTracing\PathTracing.csproj", "{6611DB2A-A679-47C8-9F3C-6A6F59745302}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PpmImage", "PpmImage\PpmImage.csproj", "{DBA45EBC-2CD0-4109-BA63-76CF3902B190}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PpmImage", "Shell\PpmImage\PpmImage.csproj", "{DBA45EBC-2CD0-4109-BA63-76CF3902B190}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9DC6E937-A310-4C95-BB7F-F7E0D2C69812}"
 EndProject

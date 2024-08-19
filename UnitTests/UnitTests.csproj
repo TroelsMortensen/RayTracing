@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PpmImage\PpmImage.csproj" />
+      <ProjectReference Include="..\Shell\PpmImage\PpmImage.csproj" />
     </ItemGroup>
 
 </Project>
