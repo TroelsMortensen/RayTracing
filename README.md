@@ -6,7 +6,7 @@ This application is based on the pdf [Ray Tracing in a Weekend](https://raytraci
 
 ## A functional approach
 I have been looking into functional programming (FP) recently, first in C#, and then F#. So I wanted to apply some of those ideas and principles. 
-I am not all that interested in the immutable data part of FP, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
+I am not necessarily all that interested in the immutable data part of FP, or monads, or all kinds of higher order functions, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
 
 ## Functional Core / Mutable Shell
 This is an architectural approach, I can't find all that much concrete information about. It seems most of my books mention it one way or another, without specifying the name.\
