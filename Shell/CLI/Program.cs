@@ -8,6 +8,7 @@ using Image = Core.Image;
 // PrintImage();
 PrintTestPng(256, 256);
 Console.WriteLine("Printed");
+return;
 
 void PrintTestPng(int width, int height) =>
     GenerateArrayOfDummyPixels(width, height)
