@@ -11,8 +11,11 @@ public static class PpmImageExport
     public static void ExportImageToPpmFile(Image image, string path) =>
         image
             .Then(ImageToPpmStringFormat)
-            .Finally(s => File.WriteAllText(path, s));
-    
+            .Finally(SaveToFile(path));
+
+    private static Action<string> SaveToFile(string path) =>
+        s => File.WriteAllText(path, s);
+
     public static string ImageToPpmStringFormat(Image image) =>
         new StringBuilder()
             .AppendLine("P3")
@@ -21,8 +24,7 @@ public static class PpmImageExport
             .Append(ConvertPixelsToPpmStringFormat(image.Pixels))
             .ToString();
 
-    
-    
+
     private static string ImageWidthByHeight(Image image) =>
         $"{image.Width} {image.Height}";
 
