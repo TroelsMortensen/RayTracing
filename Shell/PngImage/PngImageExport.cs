@@ -34,10 +34,10 @@ public static class PngImageExport
     }
 
     private static Action<(int X, int Y, Color Color)> SetColorOnBitmap(Bitmap bmp)
-        => c => bmp.SetPixel(c.X, c.Y, c.Color);
+        => xyColorTuple => bmp.SetPixel(xyColorTuple.X, xyColorTuple.Y, xyColorTuple.Color);
 
     private static Func<(int X, int Y), (int X, int Y, Color Color)> AddColorToTuple(Image image) =>
-        t => (t.X, t.Y, Color: PixelToColor(image[t.X, t.Y]));
+        xyTuple => (xyTuple.X, xyTuple.Y, Color: PixelToColor(image[xyTuple.X, xyTuple.Y]));
 
     private static IEnumerable<(int X, int Y)> GenerateXYCoordinateTuples(Image image)
         => Enumerable.Range(0, image.Width)
