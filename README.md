@@ -15,6 +15,18 @@ The first:
 I have been looking into functional programming (FP) recently, first in C#, and then F#. So I wanted to apply some of those ideas and principles. 
 I am not necessarily all that interested in the immutable data part of FP, or monads, or all kinds of higher order functions, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
 
+#### Functional code organization.
+
+What you will find is a lot of static classes, with static methods (functions). There are no classes. All data is kept in record types.\
+Pure functions work only with their input, and provide an output. They don't use field variables from a class they belong to. They don't modify field variables. Therefore, they can be made static.\
+I consider these static classes like _modules_ in F#, i.e. they are just a grouping of functions. 
+
+Some files will define a record, and then below a static class containing functions, which can operate on this record, in some way.
+
+This is very different from the usual OOP approach, where you create instances of classes, and these classes have data and properties, and methods to operate on the data.
+
+There are no interfaces, instead function signatures are used whenever I need an interface-like abstraction.
+
 ## Functional Core / Mutable Shell
 This is an architectural approach, I can't find all that much concrete information about. It seems most of my books mention it one way or another, without specifying the name.\
 The idea is just that you have most of your logic in the "core", which will be as pure FP as possible.\
