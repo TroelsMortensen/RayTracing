@@ -17,7 +17,7 @@ At the time of writing both PPM and PNG image export is in the shell, because th
 
 ## Name your expressions and prose-code
 I have also attempted to apply the "Name your expressions" approach, I heard Zoran Horvat mention [in one of his vidoes](https://www.youtube.com/watch?v=hC87MbFoRR0). 
-Essentially this idea is to do a lot of "extract single statement into separate function", so that you can give that function a descriptive name. Instead of understanding what the statement does, you can read the name.
+Essentially this idea is to do a lot of "extract single/more statement(s) into separate function", so that you can give that function a descriptive name. Instead of understanding what the statement does, you can now read the name.
 It's a kind of abstraction. It's a basic refactoring technique, called ["extract function"](https://refactoring.com/catalog/extractFunction.html).\
 The idea is just to organize your code into separate chunks, with one side-effect usually being an increase in readability, and you spend less time actually trying to understand what is going on.
 
