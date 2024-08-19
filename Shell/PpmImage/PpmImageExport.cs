@@ -28,9 +28,9 @@ public static class PpmImageExport
 
     public static string ConvertPixelsToPpmStringFormat(IEnumerable<Pixel> pixels) =>
         pixels
-            .Select(PixelToString)
+            .Select(PixelToStringRepresentation)
             .StringJoin("\r\n");
 
-    private static string PixelToString(Pixel arg) =>
+    private static string PixelToStringRepresentation(Pixel arg) =>
         $"{(int)(arg.R * 255.999f)} {(int)(arg.G * 255.999f)} {(int)(arg.B * 255.999f)}";
 }
