@@ -12,7 +12,7 @@ namespace PngImage;
 public static class PngImageExport
 {
     public static void ExportImageToPngFile(Image image, string path) =>
-        CreateEmptyBitmap(image)
+        CreateEmptyBitmapWithSize(image.Width, image.Height)
             .Then(BuildBitmapFrom(image))
             .Finally(SaveBitmapToPngAt(path));
 
@@ -22,8 +22,8 @@ public static class PngImageExport
     private static Action<Bitmap> SaveBitmapToPngAt(string path) =>
         bitmap => bitmap.Save(path, Png);
 
-    private static Bitmap CreateEmptyBitmap(Image image) =>
-        new(image.Width, image.Height);
+    private static Bitmap CreateEmptyBitmapWithSize(int width, int height) =>
+        new(width, height);
 
     private static Bitmap TransferPixelsFromImageToBitMap(Image image, Bitmap bmp)
     {
