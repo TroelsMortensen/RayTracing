@@ -13,10 +13,10 @@ public static class PngImageExport
 {
     public static void ExportImageToPngFile(Image image, string path) =>
         CreateEmptyBitmapWithSize(image.Width, image.Height)
-            .Then(BuildBitmapFrom(image))
+            .Then(ColourBitmapFrom(image))
             .Finally(SaveBitmapToPngAt(path));
 
-    private static Func<Bitmap, Bitmap> BuildBitmapFrom(Image image) =>
+    private static Func<Bitmap, Bitmap> ColourBitmapFrom(Image image) =>
         bitmap => TransferPixelsFromImageToBitMap(image, bitmap);
 
     private static Action<Bitmap> SaveBitmapToPngAt(string path) =>
