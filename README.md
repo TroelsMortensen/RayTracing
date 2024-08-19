@@ -4,6 +4,13 @@ During the last year of my master degree I worked with ray tracing. I've forgott
 
 This application is based on the pdf [Ray Tracing in a Weekend](https://raytracing.github.io/).
 
+## Images
+I include example images here, created with the application.
+
+The first:
+
+![First image](./Shell/CLI/hello_world.png)
+
 ## A functional approach
 I have been looking into functional programming (FP) recently, first in C#, and then F#. So I wanted to apply some of those ideas and principles. 
 I am not all that interested in the immutable data part of FP, but I feel that an FP approach often makes your code simpler to read, and more "fluent". I do enjoy that.
