@@ -17,10 +17,10 @@ public static class PngImageExport
             .Finally(SaveBitmapToPng(path));
 
     private static Func<Bitmap, Bitmap> MapImageOntoBitmap(Image image) =>
-        bmp => TransferPixelsFromImageToBitMap(image, bmp);
+        bitmap => TransferPixelsFromImageToBitMap(image, bitmap);
 
     private static Action<Bitmap> SaveBitmapToPng(string path) =>
-        bmp => bmp.Save(path, Png);
+        bitmap => bitmap.Save(path, Png);
 
     private static Bitmap CreateEmptyBitmap(Image image) =>
         new(image.Width, image.Height);
