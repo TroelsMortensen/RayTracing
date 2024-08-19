@@ -11,8 +11,8 @@ public record Image
     public Image(int width, int height) =>
         (Width, Height, Colors) = (width, height, new Color[width * height]);
 
-    public Image(int width, int height, Color[] pixels) =>
-        (Width, Height, Colors) = (width, height, pixels);
+    public Image(int width, int height, Color[] colors) =>
+        (Width, Height, Colors) = (width, height, colors);
 
     public Color this[int x, int y]
     {
