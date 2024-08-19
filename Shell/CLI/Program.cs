@@ -12,17 +12,17 @@ Console.WriteLine("Printed");
 return;
 
 void PrintTestPng(int width, int height) =>
-    GenerateArrayOfDummyPixels(width, height)
-        .Then(CreateImageFromPixels(width, height))
+    GenerateArrayOfDummyColors(width, height)
+        .Then(CreateImageFromColors(width, height))
         .Finally(SaveToPng());
 
-Color[] GenerateArrayOfDummyPixels(int width, int height) =>
+Color[] GenerateArrayOfDummyColors(int width, int height) =>
     Enumerable.Range(0, width).SelectMany(x => Enumerable.Range(0, height).Select(y => (X: x, Y: y)))
-        .Select(XYTupleToPixel(width, height))
+        .Select(AddColorToXYTuple(width, height))
         .ToArray();
 
-Func<Color[], Image> CreateImageFromPixels(int width, int height) =>
-    pxls => new Image(width, height, pxls);
+Func<Color[], Image> CreateImageFromColors(int width, int height) =>
+    clrs => new Image(width, height, clrs);
 
 Action<Image> SaveToPng() =>
     image => ExportImageToPngFile(
@@ -31,7 +31,7 @@ Action<Image> SaveToPng() =>
     );
 
 // ReSharper disable once InconsistentNaming
-Func<(int X, int Y), Color> XYTupleToPixel(int width, int height) =>
+Func<(int X, int Y), Color> AddColorToXYTuple(int width, int height) =>
     tuple => new Color(
         tuple.X / (float)(height - 1),
         tuple.Y / (float)(width - 1),
