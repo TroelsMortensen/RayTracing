@@ -1,6 +1,9 @@
 ﻿namespace Core;
 
-public record Color(double R, double G, double B);
+public record Color(double R, double G, double B)
+{
+    public const Color BLACK = new Color(0.0, 0.0, 0.0);
+}
 
 public record Image
 {
