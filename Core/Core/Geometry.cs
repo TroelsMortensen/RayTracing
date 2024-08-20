@@ -31,7 +31,7 @@ public record Point3(double X, double Y, double Z)
 
 public static class Point3Exts
 {
-    public static Point3 PointZero { get; } => new Point3(0.0, 0.0, 0.0);
+    public static Point3 PointZero => new Point3(0.0, 0.0, 0.0);
 }
 
 public record Ray(Point3 Origin, Vec3 Direction);

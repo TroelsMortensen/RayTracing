@@ -2,9 +2,12 @@
 
 public record Color(double R, double G, double B)
 {
-    public const Color BLACK = new Color(0.0, 0.0, 0.0);
+    public Color BLACK => new Color(0.0, 0.0, 0.0);
     public static Color operator *(double a, Color b) => new(a * b.R, a * b.G, a * b.B);
     public static Color operator +(Color a, Color b) => new(a.R + b.R, a.G + b.G, a.B + b.B);
+
+    public override string ToString() =>
+        $"Color: ({R}, {G}, {B})";
 }
 
 public static class ColorExts
@@ -25,7 +28,7 @@ public record Image
         (Width, Height, Colors) = (width, height, colors);
 
     public Image(int width, double aspectRatio) =>
-        (Width, Height, Colors) = (width, int(width / aspectRatio), new Color[width * int(width / aspectRatio)]);
+        (Width, Height, Colors) = (width, (int)(width / aspectRatio), new Color[width * (int)(width / aspectRatio)]);
 
     public Color this[int index]
     {

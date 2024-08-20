@@ -6,9 +6,9 @@ public static class MathExtensions
     
     // ReSharper disable once InconsistentNaming
     public static IEnumerable<(int X, int Y)> GenerateXYCoordinates(int width, int height) =>
-        Enumerable.Range(0, width)
-            .SelectMany(x =>
-                Enumerable.Range(0, height)
-                    .Select(y => (X: x, Y: y))
+        Enumerable.Range(0, height)
+            .SelectMany(y =>
+                Enumerable.Range(0, width)
+                    .Select(x => (X: x, Y: y))
             );
 }

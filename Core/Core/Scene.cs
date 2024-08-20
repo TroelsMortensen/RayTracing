@@ -7,7 +7,7 @@ public record Scene();
 
 public record ViewPort
 {
-    public ViewPort(double height, Image image, Camera cam)
+    public ViewPort(double height, Image image, Point3 cameraCenter, double cameraFocalLength)
     {
         Height = height;
         Width = height * ((double)image.Height) / image.Width;
@@ -16,7 +16,7 @@ public record ViewPort
 
         PixelDeltaRight = Right / image.Width;
         PixelDeltaDown = Down / image.Height;
-        UpperLeft = cam.Center - new Vec3(0, 0, cam.FocalLength) - Right / 2 - Down / 2;
+        UpperLeft = cameraCenter - new Vec3(0, 0, cameraFocalLength) - Right / 2 - Down / 2;
 
         Pixel00Location = UpperLeft + 0.5 * (PixelDeltaRight + PixelDeltaDown);
     }
@@ -48,7 +48,7 @@ public record Camera
     public ViewPort ViewPort { get; }
 
     public Camera(Point3 center, double viewportHeight, Image image) =>
-        (Center, ViewPort) = (center, new ViewPort(viewportHeight, image, this));
+        (Center, ViewPort) = (center, new ViewPort(viewportHeight, image, center, FocalLength));
 }
 
 public static class CameraExts
@@ -62,7 +62,7 @@ public static class CameraExts
             .Then(CalculateGradientBasedOnRayDirectionYValue())
             .Then(CalculateBlueGradientBasedOnGradient());
 
-    private static Func<double, Color> CalculateBlueGradientBasedOnGradient() =>
+    public static Func<double, Color> CalculateBlueGradientBasedOnGradient() =>
         d => (1.0 - d) * Color(1.0, 1.0, 1.0) + d * Color(0.5, 0.7, 1.0);
 
     private static Func<Vec3, double> CalculateGradientBasedOnRayDirectionYValue() =>
