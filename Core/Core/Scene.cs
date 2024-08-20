@@ -35,6 +35,12 @@ public record ViewPort
     public Point3 Pixel00Location { get; }
 }
 
+public static class ViewPortExts
+{
+    public static Point3 CalculatePixelCenter(this ViewPort viewPort, int x, int y)
+        => viewPort.Pixel00Location + x * viewPort.PixelDeltaRight + y * viewPort.PixelDeltaDown;
+}
+
 public record Camera
 {
     public Point3 Center { get; }
@@ -47,8 +53,11 @@ public record Camera
 
 public static class CameraExts
 {
-    public static Color RayColor(this Camera camera, Ray ray)
-        => ray
+    public static Color RayColor(this Camera camera, Ray ray) =>
+        PlaceHolderDummyFunctionWhichComputesBlueColorGradient(ray);
+
+    private static Color PlaceHolderDummyFunctionWhichComputesBlueColorGradient(Ray ray) =>
+        ray
             .Then(GetNormalizedRayDirection())
             .Then(CalculateGradientBasedOnRayDirectionYValue())
             .Then(CalculateBlueGradientBasedOnGradient());
@@ -61,7 +70,4 @@ public static class CameraExts
 
     private static Func<Ray, Vec3> GetNormalizedRayDirection() =>
         r => r.Direction.Normalize();
-
-    public static Point3 CalculatePixelCenter(this Camera camera, int x, int y)
-        => camera.ViewPort.Pixel00Location + x * camera.ViewPort.PixelDeltaRight + y * camera.ViewPort.PixelDeltaDown;
 }

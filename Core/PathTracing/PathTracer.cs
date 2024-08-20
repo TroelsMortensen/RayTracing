@@ -8,7 +8,7 @@ public static class PathTracer
 {
     public static void Render(Image image, Camera camera) =>
         GenerateXYCoordinates(image.Width, image.Height)
-            .Then(CalculatePixelCenterOnViewPort(camera))
+            .Then(CalculatePixelCenterOnViewPortAtXY(camera.ViewPort))
             .Then(CreateRayFromCameraOriginToPixel(camera))
             .Then(CalculateColorOfRayHit(camera))
             .Then(CombineColorAndPixelIndex())
@@ -26,6 +26,6 @@ public static class PathTracer
     private static Func<Point3, Ray> CreateRayFromCameraOriginToPixel(Camera camera) =>
         pixelCenter => new Ray(camera.Center, pixelCenter - camera.Center);
 
-    private static Func<(int X, int Y), Point3> CalculatePixelCenterOnViewPort(Camera camera) =>
-        xyCoordinates => camera.CalculatePixelCenter(xyCoordinates.X, xyCoordinates.Y);
+    private static Func<(int X, int Y), Point3> CalculatePixelCenterOnViewPortAtXY(ViewPort viewPort) =>
+        xyCoordinates => viewPort.CalculatePixelCenter(xyCoordinates.X, xyCoordinates.Y);
 }
