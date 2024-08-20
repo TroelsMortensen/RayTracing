@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Core\Core\Core.csproj" />
+      <ProjectReference Include="..\..\Core\PathTracing\PathTracing.csproj" />
       <ProjectReference Include="..\..\PpmImage\PpmImage.csproj" />
       <ProjectReference Include="..\PngImage\PngImage.csproj" />
     </ItemGroup>

@@ -1,13 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Core;
+using PathTracing;
 using Tooling;
+using static Core.Point3Exts;
 using static PngImage.PngImageExport;
-using Image = Core.Image;
 
 // PrintTestPng(256, 256);
 
+Image image = SetupImage();
+Camera camera = SetupCamera(image);
+PathTracer.Render(image, camera);
 
+ExportImageToPngFile(image, @"C:\TRMO\RiderProjects\RayTracing\Shell\CLI\dummy.png");
 
 Console.WriteLine("Printed");
 
@@ -19,7 +24,7 @@ void PrintTestPng(int width, int height) =>
         .Finally(SaveToPng());
 
 Color[] GenerateArrayOfDummyColors(int width, int height) =>
-    Enumerable.Range(0, width).SelectMany(x => Enumerable.Range(0, height).Select(y => (X: x, Y: y)))
+    MathExtensions.GenerateXYCoordinates(width, height)
         .Select(AddColorToXYTuple(width, height))
         .ToArray();
 
@@ -27,8 +32,8 @@ Func<Color[], Image> CreateImageFromColors(int width, int height) =>
     clrs => new Image(width, height, clrs);
 
 Action<Image> SaveToPng() =>
-    image => ExportImageToPngFile(
-        image,
+    img => ExportImageToPngFile(
+        img,
         @"C:\TRMO\RiderProjects\RayTracing\Shell\CLI\dummy.png"
     );
 
@@ -38,3 +43,19 @@ Func<(int X, int Y), Color> AddColorToXYTuple(int width, int height) =>
         tuple.X / (float)(height - 1),
         tuple.Y / (float)(width - 1),
         0.0f);
+
+Image SetupImage()
+{
+    const double aspectRatio = 16.0 / 9.0;
+    const int imageWidth = 400;
+    Image image1 = new(imageWidth, aspectRatio);
+    return image1;
+}
+
+Camera SetupCamera(Image image2)
+{
+    const double viewportHeight = 2.0;
+    Camera camera1 = new(PointZero, viewportHeight, image2);
+    return camera1;
+}
+
