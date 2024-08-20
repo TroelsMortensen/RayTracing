@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Text.Json;
 using Core;
 using PathTracing;
 using Tooling;
@@ -47,7 +48,7 @@ Func<(int X, int Y), Color> AddColorToXYTuple(int width, int height) =>
 Image SetupImage()
 {
     const double aspectRatio = 16.0 / 9.0;
-    const int imageWidth = 400;
+    const int imageWidth = 50;
     Image image1 = new(imageWidth, aspectRatio);
     return image1;
 }
