@@ -47,7 +47,7 @@ Func<(int X, int Y), Color> AddColorToXYTuple(int width, int height) =>
 Image SetupImage()
 {
     const double aspectRatio = 16.0 / 9.0;
-    const int imageWidth = 10;
+    const int imageWidth = 400;
     Image image1 = new(imageWidth, aspectRatio);
     return image1;
 }
