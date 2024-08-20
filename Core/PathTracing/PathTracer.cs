@@ -8,12 +8,11 @@ public static class PathTracer
 {
     public static void Render(Image image, Camera camera)
     {
-        int idx = 0;
-        GenerateXYCoordinates(image.Width, image.Height).Then(tuple =>
+        GenerateXYCoordinates(image.Width, image.Height).Then((tuple, index) => (X: tuple.X, Y: tuple.Y, Index: index))
+            .Then(tuple =>
             {
                 Color color = GetColorAtPixel(camera, tuple.X, tuple.Y);
-                image[idx] = color;
-                idx++;
+                image[tuple.Index] = color;
                 return color;
             })
             .Then((color, i) => (Color: color, Index: i))
