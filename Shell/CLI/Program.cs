@@ -5,7 +5,9 @@ using Tooling;
 using static PngImage.PngImageExport;
 using Image = Core.Image;
 
-PrintTestPng(256, 256);
+// PrintTestPng(256, 256);
+
+
 
 Console.WriteLine("Printed");
 
