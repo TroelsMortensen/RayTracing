@@ -35,9 +35,10 @@ Then you have the shell, where you have the impure stuff, i.e. file-access, or u
 At the time of writing both PPM and PNG image export is in the shell, because they write to a file. However, I'm considering moving those libraries to the core, because only a very small part of the libraries do the writing. The bulk of the code is close-to-pure FP, working with data transformation. So I could instead inject a function for the file-writing part. I will eventually look into this.
 
 ## Name your expressions and prose-code
-I have also attempted to apply the "Name your expressions" approach, I heard Zoran Horvat mention [in one of his vidoes](https://www.youtube.com/watch?v=hC87MbFoRR0). 
+I have attempted to apply the "Name your expressions" approach, I heard Zoran Horvat mention [in one of his vidoes](https://www.youtube.com/watch?v=hC87MbFoRR0). 
 Essentially this idea is to do a lot of "extract single/more statement(s) into separate function", so that you can give that function a descriptive name. Instead of understanding what the statement does, you can now read the name.
-It's a kind of abstraction. It's a basic refactoring technique, called ["extract function"](https://refactoring.com/catalog/extractFunction.html).\
+It's a kind of abstraction. It's a basic refactoring technique, called ["extract function"](https://refactoring.com/catalog/extractFunction.html).
+
 The idea is just to organize your code into separate chunks, with one side-effect usually being an increase in readability, and you spend less time actually trying to understand what is going on.
 
 Below is an example of how I export my image to a png file, first the main part:
@@ -108,3 +109,17 @@ This is probably perfectly fine, but I feel that abstracting the lambda expressi
  
 It is a kind of "partial application", though used differently from the usual examples, I guess.
 
+Here is another example, this is the state of the path tracer at the time of writing:
+
+```csharp
+public static void Render(Image image, Camera camera) =>
+    GenerateXYCoordinates(image.Width, image.Height)
+        .Then(CalculatePixelCenter(camera))
+        .Then(CreateRayFromCamCenterToPixelCenter(camera))
+        .Then(CalculateRayHitColor(camera))
+        .Then(CombineColorAndIndex())
+        .ForEach(SetColorOnImage(image));
+```
+
+Again, you should be able to read this as a series of steps, which are quite high-level. The details are hidden in the functions, which are named to explain what they do.\
+In this case, however, it is perhaps a bit hidden that all the Then steps happen for each x,y pair. But I think it's still quite readable.
