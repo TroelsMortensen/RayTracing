@@ -53,7 +53,7 @@ public record Camera
 
 public static class CameraExts
 {
-    public static Color RayColor(this Camera camera, Ray ray) =>
+    public static Color RayHitColor(this Camera camera, Ray ray) =>
         PlaceHolderDummyFunctionWhichComputesBlueColorGradient(ray);
 
     private static Color PlaceHolderDummyFunctionWhichComputesBlueColorGradient(Ray ray) =>

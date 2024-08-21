@@ -6,24 +6,26 @@ namespace PathTracing;
 
 public static class PathTracer
 {
-    public static void Render(Image image, Camera camera)
-    {
-        GenerateXYCoordinates(image.Width, image.Height).Then((tuple, index) => (X: tuple.X, Y: tuple.Y, Index: index))
-            .Then(tuple =>
-            {
-                Color color = GetColorAtPixel(camera, tuple.X, tuple.Y);
-                image[tuple.Index] = color;
-                return color;
-            })
-            .Then((color, i) => (Color: color, Index: i))
-            .ForEach(c => image[c.Index] = c.Color);
-    }
+    public static void Render(Image image, Camera camera) =>
+        GenerateXYCoordinates(image.Width, image.Height)
+            .Then(CalculatePixelCenter(camera))
+            .Then(CreateRayFromCamCenterToPixelCenter(camera))
+            .Then(CalculateRayHitColor(camera))
+            .Then(CombineColorAndIndex())
+            .ForEach(SetColorOnImage(image));
 
-    private static Color GetColorAtPixel(Camera camera, int i, int j)
-    {
-        Point3 pixelCenter = camera.ViewPort.CalculatePixelCenter(i, j);
-        Ray ray = new(camera.Center, pixelCenter - camera.Center);
-        Color color = camera.RayColor(ray);
-        return color;
-    }
+    private static Action<(Color Color, int Index)> SetColorOnImage(Image image) =>
+        colorAndPixelIndex => image[colorAndPixelIndex.Index] = colorAndPixelIndex.Color;
+
+    private static Func<Color, int, (Color Color, int Index)> CombineColorAndIndex() =>
+        (color, i) => (Color: color, Index: i);
+
+    private static Func<Ray, Color> CalculateRayHitColor(Camera camera) =>
+        camera.RayHitColor;
+
+    private static Func<Point3, Ray> CreateRayFromCamCenterToPixelCenter(Camera camera) =>
+        pixelCenter => new Ray(camera.Center, pixelCenter - camera.Center);
+
+    private static Func<(int X, int Y), Point3> CalculatePixelCenter(Camera camera) =>
+        xyCoords => camera.ViewPort.CalculatePixelCenter(xyCoords.X, xyCoords.Y);
 }
