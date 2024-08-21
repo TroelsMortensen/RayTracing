@@ -7,9 +7,13 @@ This application is based on the pdf [Ray Tracing in a Weekend](https://raytraci
 ## Images
 I include example images here, created with the application.
 
-The first:
+The first, considered the "hello world" of this app:
 
 ![First image](./Shell/CLI/hello_world.png)
+
+The path tracer initially creates a simple image, with a gradient from white to blue, based on the ray y-coordinate.
+
+![Blue Gradient](./Shell/CLI/BlueGradient.png)
 
 ## A functional approach
 I have been looking into functional programming (FP) recently, first in C#, and then F#. So I wanted to apply some of those ideas and principles. 
