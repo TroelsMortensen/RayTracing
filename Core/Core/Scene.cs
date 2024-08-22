@@ -1,5 +1,6 @@
 ﻿using Tooling;
 using static Core.ColorExts;
+using static Core.ObjectIntersectionExts;
 
 namespace Core;
 
@@ -10,7 +11,7 @@ public record ViewPort
     public ViewPort(double height, Image image, Point3 cameraCenter, double cameraFocalLength)
     {
         Height = height;
-        Width = height * ((double)image.Height) / image.Width;
+        Width = height * ((double)image.Width) / image.Height;
         Right = new Vec3(Width, 0, 0);
         Down = new Vec3(0, -Height, 0);
 
@@ -54,13 +55,12 @@ public record Camera
 public static class CameraExts
 {
     public static Color RayHitColor(this Camera camera, Ray ray) =>
-        PlaceHolderDummyFunctionWhichComputesBlueColorGradient(ray);
-
-    private static Color PlaceHolderDummyFunctionWhichComputesBlueColorGradient(Ray ray) =>
-        ray
-            .Then(GetNormalizedRayDirection())
-            .Then(CalculateGradientBasedOnRayDirectionYValue())
-            .Then(CalculateBlueGradientBasedOnGradient());
+        RayHitsSphere(new Point3(0, 0, -1), 0.5, ray)
+            ? Color(1.0, 0.0, 0.0)
+            : ray
+                .Then(GetNormalizedRayDirection())
+                .Then(CalculateGradientBasedOnRayDirectionYValue())
+                .Then(CalculateBlueGradientBasedOnGradient());
 
     public static Func<double, Color> CalculateBlueGradientBasedOnGradient() =>
         d => (1.0 - d) * Color(1.0, 1.0, 1.0) + d * Color(0.5, 0.7, 1.0);

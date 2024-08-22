@@ -1,4 +1,6 @@
-﻿namespace Core;
+﻿using static Core.Vec3;
+
+namespace Core;
 
 public record Vec3(double X, double Y, double Z)
 {
@@ -39,4 +41,17 @@ public record Ray(Point3 Origin, Vec3 Direction);
 public static class RayExts
 {
     public static Point3 At(this Ray r, double t) => r.Origin + r.Direction * t;
+}
+
+public static class ObjectIntersectionExts
+{
+    public static bool RayHitsSphere(Point3 center, double radius, Ray r)
+    {
+        Vec3 oc = r.Origin - center;
+        double a = Dot(r.Direction, r.Direction);
+        double b = -2.0 * Dot(r.Direction, oc);
+        double c = Dot(oc, oc) - radius.Square();
+        double discriminant = b.Square() - 4 * a * c;
+        return discriminant >= 0;
+    }
 }

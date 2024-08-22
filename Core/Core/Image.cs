@@ -2,10 +2,6 @@
 
 public record Color
 {
-    private Color()
-    {
-    }
-
     public Color(double R, double G, double B)
     {
         this.R = R;
@@ -13,12 +9,11 @@ public record Color
         this.B = B;
     }
 
-    // public static Color BLACK => new Color(0.0, 0.0, 0.0);
     public static Color operator *(double a, Color b) => new(a * b.R, a * b.G, a * b.B);
     public static Color operator +(Color a, Color b) => new(a.R + b.R, a.G + b.G, a.B + b.B);
-    public double R { get; init; }
-    public double G { get; init; }
-    public double B { get; init; }
+    public double R { get; }
+    public double G { get; }
+    public double B { get; }
 
     public override string ToString() =>
         $"Color: ({R}, {G}, {B})";
@@ -34,10 +29,6 @@ public record Image
     public int Width { get; }
     public int Height { get; }
     public Color[] Colors { get; }
-
-    public Image()
-    {
-    }
 
     public Image(int width, int height) =>
         (Width, Height, Colors) = (width, height, new Color[width * height]);
